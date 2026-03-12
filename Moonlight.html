@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПК Игры на Switch - FeySwitch</title>
+    <meta name="description" content="Как стримить ПК игры на Nintendo Switch через Moonlight (Nvidia GameStream / Sunshine).">
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <main>
+        <header>
+            <h1 style="display: flex; align-items: center; gap: 16px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: #30d158;"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                ПК игры на Switch (Moonlight)
+            </h1>
+            <p>Превратите ваш Switch в аналог Steam Deck! Транслируйте любую тяжелую ПК-игру (Cyberpunk, GTA V, Dota) прямо на экран консоли по локальной Wi-Fi сети с минимальной задержкой.</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Настройка трансляции</h2>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                Вам понадобится хороший 5GHz Wi-Fi роутер и компьютер. Вся нагрузка по обработке графики ложится на ПК, поэтому Свич не будет греться, а батареи хватит на 5-6 часов игры!
+            </p>
+
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Настройка ПК (Сервер).</strong> Установите на ваш компьютер бесплатную программу <strong>Sunshine</strong> (лучшая альтернатива закрытому Nvidia GameStream). Запустите её, зайдите в веб-интерфейс и добавьте ваши игры или весь рабочий стол.
+                </li>
+                <li>
+                    <strong>Установка Moonlight на Switch.</strong> Зайдите в приложение <strong>HB App Store</strong> на консоли и скачайте программу <strong>Moonlight-NX</strong> (или скачайте файл .nro с GitHub и закиньте в папку <span class="code-inline">switch</span>).
+                </li>
+                <li>
+                    <strong>Подключение.</strong> Подключите ПК и Switch к одной Wi-Fi сети. Желательно, чтобы ПК был подключен к роутеру по кабелю (LAN), а Switch сидел на частоте 5GHz для минимального пинга.
+                </li>
+                <li>
+                    <strong>Связь (Pairing).</strong> Запустите Moonlight на консоли. Программа найдет ваш ПК в сети. Нажмите на него — на экране Свича появится пин-код. Введите этот пин-код в программе Sunshine на ПК, чтобы подтвердить доверие.
+                </li>
+                <li>
+                    <strong>Настройки качества.</strong> В настройках Moonlight на консоли установите разрешение <strong>720p</strong> (для портатива) или 1080p (для док-станции), выберите <strong>60 FPS</strong> и битрейт около 10-15 Mbps.
+                </li>
+                <li>
+                    <strong>Играем!</strong> Нажмите на иконку вашего ПК в Moonlight и запустите Steam Big Picture или рабочий стол. Консольные кнопки Switch (стик, курки) будут работать в ПК-играх автоматически, как обычный Xbox геймпад!
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+</body>
+</html>

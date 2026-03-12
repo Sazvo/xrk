@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трансляция в OBS (SysDVR) - FeySwitch</title>
+    <meta name="description" content="Как стримить экран Nintendo Switch на ПК в OBS Studio или Discord без карты захвата через SysDVR.">
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <main>
+        <header>
+            <h1 style="display: flex; align-items: center; gap: 16px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: #0a84ff;"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                Стрим экрана без карты захвата
+            </h1>
+            <p>Системный модуль SysDVR позволяет транслировать изображение и звук с Nintendo Switch прямо на ваш компьютер по USB-кабелю или Wi-Fi для записи в OBS или стриминга в Discord!</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Как использовать SysDVR</h2>
+            <div class="alert warning">
+                <strong>Ограничение:</strong> SysDVR транслирует картинку только в разрешении <strong>720p @ 30 FPS</strong>. Видео записывается из видеобуфера самой консоли. Некоторые тяжелые игры могут отключать возможность захвата для экономии ресурсов.
+            </div>
+
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Подготовка Свича.</strong> В сборках UltraNX и Kefir модуль <strong>SysDVR</strong> обычно уже установлен. Если нет — скачайте его с GitHub и закиньте папку <span class="code-inline">atmosphere</span> в корень вашей флешки. Перезагрузите консоль.
+                </li>
+                <li>
+                    <strong>Подготовка ПК (Клиент).</strong> Скачайте на компьютер клиентскую программу <a href="https://github.com/exelix11/SysDVR-Client/releases" target="_blank" style="color: var(--accent-color);"><strong>SysDVR-Client</strong></a> (GUI-версию для удобства).
+                </li>
+                <li>
+                    <strong>Запуск на консоли.</strong> Зайдите в Homebrew Menu (через Альбом) и откройте приложение <strong>SysDVR Settings</strong>. Выберите режим:
+                    <ul class="nested-note">
+                        <li><strong>USB (Рекомендуется):</strong> Идеальное качество, без пинга. Подключите Switch к ПК кабелем Type-C.</li>
+                        <li><strong>TCP Bridge (Wi-Fi):</strong> Беспроводной стрим. Требует хорошего роутера (5GHz). Запомните IP-адрес, который покажет консоль.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Прием на ПК.</strong> Откройте <em>SysDVR-Client GUI</em> на компьютере. 
+                    <br>• Выберите <strong>Stream Source</strong>: USB или сеть (введите IP адрес консоли).
+                    <br>• Нажмите <strong>Launch</strong>.
+                </li>
+                <li>
+                    <strong>Результат.</strong> На вашем ПК откроется окно плеера (mpv/vlc), где будет в реальном времени отображаться геймплей со Switch вместе со звуком!
+                </li>
+                <li>
+                    <strong>Стрим в Discord/OBS.</strong> Теперь вы можете просто захватить окно этого плеера в программе OBS Studio или нажать "Демонстрация экрана -> Окно" в Discord, чтобы показать игру друзьям!
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+</body>
+</html>

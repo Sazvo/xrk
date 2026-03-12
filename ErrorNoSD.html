@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка "No SD card" - FeySwitch</title>
+    <meta name="description" content="Решение частой проблемы: консоль выдает экран с ракетой и надписью No SD card после чиповки.">
+    
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main>
+        <header>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                <img src="assets/Warning.svg" alt="Ошибка" style="height: 48px; width: auto;">
+                <h1 style="margin-bottom: 0;">Ошибка "No SD card"</h1>
+            </div>
+            <p>Вы включили консоль после установки чипа (PicoFly/HWFLY), но на экране появился черный фон с ракетой/SD-картой и надписью <strong>"No SD card"</strong>. Что это значит и как исправить?</p>
+        </header>
+
+        <!-- Инструкция по решению -->
+        <section class="content-section">
+            <h2>Как исправить проблему</h2>
+            
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Выключите консоль.</strong> Зажмите кнопку питания на 12-15 секунд, чтобы полностью выключить Nintendo Switch.
+                </li>
+                <li>
+                    <strong>Достаньте SD-карту.</strong> Извлеките MicroSD из консоли и подключите её к компьютеру через картридер.
+                </li>
+                <li>
+                    <strong>Отформатируйте карту.</strong> Убедитесь, что карта имеет формат <strong>FAT32</strong> (используйте программу Rufus). Использование формата exFAT часто приводит к тому, что чип просто не видит файлы на карте.
+                </li>
+                <li style="margin-bottom: 32px;">
+                    <strong>Скопируйте прошивку.</strong> Скачайте архив с нужной вам прошивкой и скопируйте все папки прямо в корень вашей SD-карты. Мы настоятельно рекомендуем использовать <strong>UltraNX</strong>, так как она содержит всё необходимое для мгновенного запуска.
+                    <br>
+                    <span style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px; display: inline-block;"><em>Обязательно убедитесь, что в корне карты лежит файл <strong>payload.bin</strong> (он всегда есть в архиве UltraNX), который нужен чипу для загрузки.</em></span>
+                    <br>
+                    
+                    <!-- Кнопка перехода на туториал UltraNX -->
+                    <a href="UltraNX.html" class="btn" style="margin-top: 16px; background-color: var(--text-main); color: var(--bg-color);">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        Гайд по установке UltraNX
+                    </a>
+                </li>
+                <li>
+                    <strong>Вставьте карту обратно.</strong> Вставьте MicroSD в выключенную консоль и нажмите кнопку включения. Ошибка "No SD card" должна исчезнуть, и перед вами появится меню загрузчика (Hekate) или логотип прошивки!
+                </li>
+            </ul>
+        </section>
+
+        <!-- Блок аппаратных проблем (если программные не помогли) -->
+        <section class="content-section" style="border-color: #ff453a;">
+            <h2 style="color: #ff453a; display: flex; align-items: center; gap: 10px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                Если ничего не помогло
+            </h2>
+            <p style="color: #cccccc; line-height: 1.6; margin-bottom: 12px;">
+                Вы всё отформатировали в FAT32 и закинули правильные файлы, но ошибка "No SD card" осталась? Возможны аппаратные проблемы:
+            </p>
+            <ul style="color: var(--text-muted); line-height: 1.6; padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Плохой контакт ридера.</strong> Вы могли плохо защелкнуть шлейф SD-ридера при сборке консоли. Разберите её и переподключите шлейф модуля SD-карты на материнской плате.</li>
+                <li style="margin-bottom: 8px;"><strong>Неисправная SD-карта.</strong> Попробуйте использовать другую флешку, даже самую дешевую и маленькую, просто чтобы проверить, запустится ли с неё Hekate.</li>
+                <li><strong>Проблема с пайкой (реже).</strong> Проверьте точку пайки DAT0. Если контакт нестабильный, чип может сбоить при попытке чтения карты.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

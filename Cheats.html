@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Читы в играх (EdiZon) - FeySwitch</title>
+    <meta name="description" content="Как включать читы на бессмертие, деньги и 60 FPS на Nintendo Switch через EdiZon Overlay.">
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <main>
+        <header>
+            <h1 style="display: flex; align-items: center; gap: 16px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: #ff453a;"><path d="M21 11l-7-7v4C7 9 4 14 3 19c2.5-3.5 6-5.1 11-5.1V18l7-7z"/></svg>
+                Читы в играх (EdiZon)
+            </h1>
+            <p>Инструкция по использованию чит-кодов (бессмертие, бесконечные деньги, анлок FPS) прямо во время игры через систему EdiZon Overlay.</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Как включать читы</h2>
+            <div class="alert warning">
+                <strong>Важно:</strong> Читы работают ТОЛЬКО для конкретной версии игры (TitleID + Build ID). Если вы обновили игру, старые читы перестанут работать, пока вы не скачаете новую базу читов.
+            </div>
+
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Обновление базы читов.</strong> Чтобы читы появились, их нужно скачать. Откройте приложение <strong>All in One Updater</strong> (или <em>Kefir Updater</em>), перейдите в раздел <em>Скачать читы</em> и загрузите актуальную базу.
+                </li>
+                <li>
+                    <strong>Запуск игры.</strong> Запустите нужную вам игру и загрузите свое сохранение (чтобы персонаж появился в мире).
+                </li>
+                <li>
+                    <strong>Вызов меню (Tesla Menu).</strong> Во время игры нажмите комбинацию: <br>
+                    <span class="code-inline">L</span> + <span class="code-inline">R</span> + <span class="code-inline">Стрелка ВЛЕВО (D-Pad)</span>.
+                </li>
+                <li>
+                    <strong>Активация читов.</strong> В боковом меню выберите пункт <strong>EdiZon</strong>. <br>
+                    Если для вашей игры и её версии есть читы в базе, вы увидите список: <em>Infinite Health</em>, <em>Max Gold</em>, <em>60 FPS patch</em> и т.д.<br>
+                    Просто нажимайте <strong>A</strong>, чтобы переключить их с <em>[ ]</em> на <em>[X]</em> (Включено).
+                </li>
+                <li>
+                    <strong>Возможные проблемы:</strong> Если при открытии EdiZon написано <em>"No cheats loaded"</em> — значит в скачанной базе нет читов конкретно для вашей версии игры. Вам придется искать их вручную в интернете и закидывать в папку <span class="code-inline">atmosphere/contents/[TitleID]/cheats/</span>.
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+</body>
+</html>

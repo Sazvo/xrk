@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+
+:root { 
+    --bg-color: #0a0a0a; 
+    --sidebar-bg: #111111; 
+    --surface-color: #141414; 
+    --border-color: #262626; 
+    --text-main: #f0f0f0; 
+    --text-muted: #888888; 
+    --accent-color: #ffffff; 
+    --alert-bg: rgba(255, 69, 58, 0.1); 
+    --alert-border: #ff453a; 
+    --warning-bg: rgba(255, 159, 10, 0.1);
+    --warning-border: #ff9f0a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-main); display: flex; min-height: 100vh; overflow-x: hidden; }
+
+/* КРАСИВЫЙ СКРОЛЛБАР ДЛЯ DARK MODE */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-color); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* МАГИЯ: Заставляем браузер игнорировать обертку и не ломать Flex-верстку */
+#sidebar-container { display: contents; }
+
+/* Мобильная шапка (скрыта на ПК) */
+.mobile-header { display: none; background-color: var(--sidebar-bg); padding: 15px 20px; border-bottom: 1px solid var(--border-color); align-items: center; justify-content: space-between; }
+.mobile-logo { font-size: 1.2rem; font-weight: 700; color: var(--accent-color); text-decoration: none; }
+.menu-btn { background: none; border: none; color: var(--text-main); font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; }
+
+/* Сайдбар (ИСПРАВЛЕНО: Полная высота + Фиксация при скролле) */
+aside { 
+    width: 260px; 
+    height: 100vh; 
+    position: sticky; 
+    top: 0; 
+    overflow-y: auto; 
+    background-color: var(--sidebar-bg); 
+    border-right: 1px solid var(--border-color); 
+    display: flex; 
+    flex-direction: column; 
+    padding: 30px 20px; 
+    flex-shrink: 0; 
+    z-index: 100; 
+    transition: transform 0.3s ease; 
+}
+.logo { margin-bottom: 40px; padding-left: 12px; transition: opacity 0.2s; }
+.logo:hover { opacity: 0.8; }
+
+/* Настройки для заголовков (IBM Plex Mono) */
+header h1 { 
+    font-size: 2.2rem; 
+    font-weight: 700; 
+    margin-bottom: 8px; 
+    letter-spacing: -0.5px;
+}
+
+.content-section h2 { 
+    font-size: 1.4rem; 
+    margin-bottom: 20px; 
+    font-weight: 600; 
+    color: var(--accent-color); 
+}
+
+/* Возвращаем аккуратное меню */
+.nav-list a { 
+    font-size: 0.95rem; 
+    font-weight: 500;
+}
+.category-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+
+/* Названия категорий в боковом меню */
+.category-title {
+    font-size: 0.85rem; /* Увеличили размер (было 0.75rem) */
+    text-transform: uppercase; 
+    letter-spacing: 2px; /* Чуть шире буквы для стиля */
+    color: var(--text-main); /* Сделали белым/ярким (было --text-muted) */
+    font-weight: 500; /* Сделали более жирным */
+    margin-bottom: 12px; 
+    padding-left: 12px;
+    opacity: 0.8; /* Легкая прозрачность, чтобы не спорить с заголовками контента */
+    /* Опционально: легкая линия снизу для еще большего акцента (если нравится) */
+    /* border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px; */
+}
+
+.category-spacing { margin-top: 30px; }
+.nav-list { list-style: none; }
+.nav-list li { margin-bottom: 4px; }
+.nav-list a { text-decoration: none; color: var(--text-muted); display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; font-size: 0.95rem; transition: all 0.2s ease; }
+.nav-list a:hover { color: var(--text-main); background-color: rgba(255, 255, 255, 0.05); }
+.nav-list a.active { color: var(--accent-color); background-color: rgba(255, 255, 255, 0.1); font-weight: 500; }
+.sub-category { margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px !important; border-radius: 0 !important; }
+.sub-category:hover, .sub-category.active { background-color: transparent !important; color: var(--accent-color); }
+.sub-category.active { border-bottom: 1px solid var(--accent-color); }
+.sub-category svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* Контент */
+main { flex-grow: 1; padding: 50px 60px; display: flex; flex-direction: column; max-width: 1200px; }
+header { margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 30px; }
+header h1 { font-size: 2.2rem; font-weight: 600; margin-bottom: 8px; }
+header p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.5; }
+.content-section { background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 30px; margin-bottom: 30px; }
+.content-section h2 { font-size: 1.4rem; margin-bottom: 20px; font-weight: 600; color: var(--accent-color); }
+.alert { background: var(--alert-bg); border-left: 4px solid var(--alert-border); padding: 16px 20px; border-radius: 0 8px 8px 0; color: #ffcecb; margin-bottom: 24px; font-size: 0.95rem; line-height: 1.5; }
+.alert.warning { background: var(--warning-bg); border-color: var(--warning-border); color: #ffe5b4; }
+.tutorial-steps { list-style: none; counter-reset: steps; }
+.tutorial-steps li { position: relative; padding-left: 44px; margin-bottom: 24px; color: #cccccc; line-height: 1.6; font-size: 0.95rem; }
+.tutorial-steps li::before { content: counter(steps); counter-increment: steps; position: absolute; left: 0; top: -2px; width: 28px; height: 28px; background: #222; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600; }
+.tutorial-steps strong { color: var(--text-main); }
+.code-inline { background: #000; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9rem; color: #aaa; border: 1px solid #333; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background-color: var(--text-main); color: var(--bg-color); border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: opacity 0.2s ease; margin-top: 10px; width: fit-content; }
+.btn:hover { opacity: 0.8; }
+.btn svg { width: 18px; height: 18px; fill: currentColor; }
+footer { margin-top: auto; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem; }
+
+/* Сетка видеороликов */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 30px; }
+.video-card { background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; }
+.video-card h3 { font-size: 1.1rem; margin-bottom: 16px; color: var(--text-main); text-align: center; font-weight: 600; }
+.video-container { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 8px; overflow: hidden; background-color: #000; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.yt-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; padding: 10px; background-color: #262626; color: #ffffff; text-decoration: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; transition: all 0.2s ease; border: 1px solid #333333; }
+.yt-btn:hover { background-color: #ff0000; border-color: #ff0000; }
+.yt-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* Затемнение фона для мобильного меню */
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 90; backdrop-filter: blur(2px); opacity: 0; transition: opacity 0.3s ease; }
+
+/* Адаптив для смартфонов */
+@media (max-width: 768px) {
+    body { flex-direction: column; }
+    .mobile-header { display: flex; }
+    
+    aside {
+        position: fixed;
+        top: 0; left: 0;
+        height: 100vh;
+        width: 280px;
+        transform: translateX(-100%); 
+        border-right: 1px solid var(--border-color);
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+    
+    aside.open { transform: translateX(0); }
+    .overlay.open { display: block; opacity: 1; }
+    
+    main { padding: 30px 20px; }
+}
+
+/* =========================================
+   БЫСТРАЯ АНИМАЦИЯ ПЕРЕХОДОВ (SCALE + FADE)
+========================================= */
+
+/* Анимация появления (быстрый zoom-in) */
+main {
+    animation: quickScaleIn 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes quickScaleIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.97); /* Чуть уменьшено */
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); /* Нормальный размер */
+    }
+}
+
+/* Класс для анимации исчезновения (быстрый zoom-out) */
+.fade-out {
+    animation: quickScaleOut 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+@keyframes quickScaleOut {
+    from { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+    to { 
+        opacity: 0; 
+        transform: scale(0.97); 
+    }
+}
+
+/* Стили для скриншотов в гайдах */
+.tutorial-img {
+    display: block;
+    max-width: 100%;
+    /* Ограничиваем ширину, чтобы картинки не были гигантскими на ПК */
+    max-height: 350px; 
+    object-fit: contain;
+    border-radius: 8px;
+    margin-top: 12px;
+    border: 1px solid var(--border-color);
+    background-color: #000;
+}
+
+/* =========================================
+   ВКЛАДКИ (TABS) ДЛЯ ИНСТРУКЦИЙ
+========================================= */
+.tabs-container {
+    margin-bottom: 30px;
+}
+
+.tabs-header {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+/* Красивый скролл для табов на мобилках */
+.tabs-header::-webkit-scrollbar { height: 4px; }
+.tabs-header::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+    color: var(--bg-color);
+    background: var(--text-main);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Стили для вложенных списков в гайде */
+.nested-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+.nested-list li {
+    margin-bottom: 6px;
+}
+
+/* =========================================
+   FAQ АККОРДЕОН
+========================================= */
+.faq-item {
+    background: rgba(20, 20, 20, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.faq-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 16px 20px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question::after {
+    content: '−';
+    transform: rotate(90deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    padding: 0 20px;
+    opacity: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+    transition: all 0.3s ease-out;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px; /* Достаточно для текста */
+    padding: 0 20px 20px 20px;
+    opacity: 1;
+}
+
+

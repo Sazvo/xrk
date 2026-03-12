@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Установка PicoFly RP2040 - FeySwitch</title>
+    <meta name="description" content="Руководство по установке аппаратного модчипа PicoFly (на базе RP2040) для взлома непрошиваемых ревизий Nintendo Switch.">
+    
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main>
+        <header>
+            <h1>Установка PicoFly RP2040</h1>
+            <p>Руководство по установке аппаратного модчипа (глич-чипа) на базе микроконтроллера Raspberry Pi RP2040 для взлома непрошиваемых ревизий.</p>
+            
+            <!-- Кнопка на официальный сайт с вашей иконкой -->
+            <a href="https://picofly.ru/" target="_blank" class="btn" style="margin-top: 10px;">
+                <img src="Picofly/PicoFly.svg" alt="PicoFly Logo" aria-hidden="true" style="width: 18px; height: 18px;">
+                Официальный сайт
+            </a>
+        </header>
+
+        <section class="content-section">
+            <h2>Видеоинструкции по пайке</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Выберите видео, соответствующее ревизии вашей консоли. Если плеер не загружается, используйте кнопку перехода на YouTube.</p>
+            
+            <div class="video-grid">
+                <!-- Видео V2 -->
+                <div class="video-card">
+                    <h3>Switch V2 (2 Rev)</h3>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/2EWDt2E8Eew" title="PicoFly Switch V2 Install" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <a href="https://youtu.be/2EWDt2E8Eew" target="_blank" class="yt-btn">
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        Открыть в YouTube
+                    </a>
+                </div>
+
+                <!-- Видео Lite -->
+                <div class="video-card">
+                    <h3>Switch Lite</h3>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/uIyTuLoRiNY" title="PicoFly Switch Lite Install" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=uIyTuLoRiNY" target="_blank" class="yt-btn">
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        Открыть в YouTube
+                    </a>
+                </div>
+
+                <!-- Видео OLED -->
+                <div class="video-card">
+                    <h3>Switch OLED</h3>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/xi8GFM-MZ8Y" title="PicoFly Switch OLED Install" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=xi8GFM-MZ8Y" target="_blank" class="yt-btn">
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        Открыть в YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

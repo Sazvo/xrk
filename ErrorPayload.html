@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка Payload - FeySwitch</title>
+    <meta name="description" content="Решение проблемы: Failed to stat /payload.bin или Failed to open payload.bin при запуске Nintendo Switch.">
+    
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main>
+        <header>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                <img src="assets/Warning.svg" alt="Ошибка" style="height: 48px; width: auto;">
+                <h1 style="margin-bottom: 0; font-size: 1.8rem;">Failed to open payload.bin</h1>
+            </div>
+            <p>При включении консоли на экране появляется надпись <strong>"Failed to stat /payload.bin!"</strong> или консоль просто виснет на черном экране после логотипа чипа. Что это значит?</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Почему это происходит?</h2>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                Ваш чип (или инжектор, если у вас первая ревизия V1) пытается запустить кастомную прошивку. Для этого ему нужен файл-загрузчик, который <strong>строго должен называться <span class="code-inline">payload.bin</span></strong> и лежать в самом корне SD-карты. Если файла нет, он поврежден или называется иначе — вы получаете эту ошибку.
+            </p>
+
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Отсутствует файл.</strong> Вы скопировали папки прошивки на карту памяти, но забыли скопировать сам файл загрузчика. Подключите флешку к ПК и убедитесь, что файл <span class="code-inline">payload.bin</span> лежит рядом с папками <span class="code-inline">atmosphere</span> и <span class="code-inline">bootloader</span>.
+                </li>
+                <li>
+                    <strong>Скрытые расширения файлов в Windows.</strong> Это самая частая ошибка новичков! В Windows по умолчанию скрыты расширения известных файлов. Вы вручную переименовываете файл Hekate в "payload.bin", но на самом деле он становится <strong>payload.bin.bin</strong>. <br>
+                    <span style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; display: inline-block;"><em>Решение: Включите отображение расширений в папке Windows (Вид -> Показывать -> Расширения имен файлов) и убедитесь, что имя правильное.</em></span>
+                </li>
+                <li>
+                    <strong>Неправильный формат карты (exFAT).</strong> Если карта отформатирована в exFAT, чип может видеть саму флешку, но не может прочитать файл payload.bin из-за сбоев драйвера. Отформатируйте карту в <strong>FAT32</strong> через программу Rufus.
+                </li>
+                <li style="margin-bottom: 32px;">
+                    <strong>Используйте готовую сборку.</strong> Чтобы не искать нужный payload и не переименовывать файлы вручную, используйте сборку <strong>UltraNX</strong> — в её архиве уже лежит правильный, настроенный файл <span class="code-inline">payload.bin</span> для быстрого старта.
+                    <br>
+                    
+                    <a href="UltraNX.html" class="btn" style="margin-top: 16px; background-color: var(--text-main); color: var(--bg-color);">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        Установить UltraNX
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Альтернативные загрузчики -->
+        <section class="content-section" style="border-color: #0a84ff;">
+            <h2 style="color: #0a84ff; display: flex; align-items: center; gap: 10px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Заметка для старых чипов
+            </h2>
+            <p style="color: #cccccc; line-height: 1.6;">
+                Некоторые старые чипы (ранние версии HWFLY или клоны SX Core) иногда ищут не <span class="code-inline">payload.bin</span>, а файлы с именем <strong><span class="code-inline">boot.dat</span></strong> или <strong><span class="code-inline">spacecraft.bin</span></strong>. <br><br>
+                Если переименование в payload.bin не помогает, попробуйте переименовать файл вашего загрузчика (Hekate) в одно из этих имен. Однако на современных чипах PicoFly всегда используется стандартный payload.bin.
+            </p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

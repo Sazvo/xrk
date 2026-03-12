@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Любые геймпады на Switch - FeySwitch</title>
+    <meta name="description" content="Как подключить геймпады от PS4, PS5, Xbox One/Series к Nintendo Switch с помощью MissionControl.">
+    
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main>
+        <header>
+            <h1 style="display: flex; align-items: center; gap: 16px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: var(--accent-color);"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                Сторонние геймпады
+            </h1>
+            <p>На прошитом Nintendo Switch вы можете использовать геймпады от PlayStation (DualShock 4, DualSense) и Xbox (One S, Series X/S) по Bluetooth так же, как родные Pro Controller!</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Как это работает (MissionControl)</h2>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                Магия происходит благодаря системному модулю <strong>MissionControl</strong>. В сборках <strong>UltraNX</strong> и <strong>Kefir</strong> он уже установлен и работает в фоновом режиме по умолчанию. Вам не нужно ничего скачивать!
+            </p>
+
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Откройте меню контроллеров.</strong> На главном экране Switch перейдите в раздел <span class="code-inline">Контроллеры</span> -> <span class="code-inline">Изменить способ удерживания/порядок</span>.
+                </li>
+                <li>
+                    <strong>Режим сопряжения (Pairing Mode).</strong> Возьмите ваш геймпад и переведите его в режим поиска Bluetooth:
+                    <ul class="nested-note">
+                        <li><strong>PlayStation (DualShock / DualSense):</strong> Зажмите одновременно кнопки <strong>PS</strong> + <strong>Share (Create)</strong> на 3-5 секунд, пока световая панель не начнет быстро мигать.</li>
+                        <li><strong>Xbox:</strong> Включите геймпад кнопкой Xbox, затем зажмите маленькую кнопку <strong>Sync</strong> на верхнем торце геймпада, пока логотип Xbox не начнет быстро мигать.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Подключение.</strong> Подождите несколько секунд. Консоль обнаружит ваш геймпад и он появится на экране Switch как родной Pro Controller! Нажмите на нем <span class="code-inline">L + R</span>, чтобы подтвердить выбор.
+                </li>
+            </ul>
+            
+            <div class="alert warning">
+                <strong>Важно после обновления прошивки:</strong> Модуль MissionControl строго привязан к версии системы. Если вы обновили Firmware через Daybreak, сторонние геймпады перестанут подключаться, пока вы не обновите саму сборку UltraNX/Kefir, где будет новая версия модуля.
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

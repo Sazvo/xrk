@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Установка тем - FeySwitch</title>
+    <meta name="description" content="Как установить кастомные темы на Nintendo Switch через NXThemes Installer и избежать ошибок при обновлении.">
+    
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main>
+        <header>
+            <h1>Кастомные темы</h1>
+            <p>Установка красивых тем для главного экрана (Home Menu) и экрана блокировки вашей консоли с помощью приложения NXThemes Installer.</p>
+        </header>
+
+        <!-- ВАЖНОЕ ПРЕДУПРЕЖДЕНИЕ -->
+        <section class="content-section" style="border-color: #ff9f0a;">
+            <h2 style="color: #ff9f0a; display: flex; align-items: center; gap: 10px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                Золотое правило тем!
+            </h2>
+            <p style="color: #cccccc; line-height: 1.6;">
+                Кастомные темы жестко привязаны к версии вашей системы. <strong>Перед КАЖДЫМ обновлением прошивки</strong> (через Daybreak) вы обязаны зайти в NXThemes Installer и удалить все установленные темы (кнопка <em>Uninstall Theme</em>). Иначе после обновления консоль не включится.
+            </p>
+        </section>
+
+        <!-- Инструкция по установке -->
+        <section class="content-section">
+            <h2>Как установить темы (через ПК)</h2>
+            
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Где скачать?</strong> Перейдите на сайт <a href="https://themezer.net/" target="_blank" style="color: var(--accent-color); text-decoration: none;"><strong>Themezer.net</strong></a> — это самая большая и безопасная база тем для Switch. Выберите понравившуюся тему и скачайте её. Файлы тем имеют расширение <span class="code-inline">.nxtheme</span>.
+                </li>
+                <li>
+                    <strong>Копирование на SD-карту.</strong> Достаньте карту памяти из консоли (или используйте MTP в DBI). Создайте в корне флешки папку с названием <strong><span class="code-inline">themes</span></strong> и закиньте туда скачанные файлы <span class="code-inline">.nxtheme</span>.
+                </li>
+                <li>
+                    <strong>Запуск установщика.</strong> Вставьте карту обратно, включите консоль, зайдите в Homebrew Menu (через Альбом) и откройте приложение <strong>NXThemes Installer</strong> <br>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;"><em>(Оно уже встроено в сборки UltraNX и Kefir по умолчанию).</em></span>
+                </li>
+                <li>
+                    <strong>Извлечение Home Menu.</strong> Если вы запускаете приложение впервые, оно попросит вас извлечь оригинальное меню. Выберите <strong>Extract home menu</strong>. Это делается один раз и занимает пару секунд.
+                </li>
+                <li>
+                    <strong>Установка.</strong> Перейдите на вкладку <strong>Themes</strong>, найдите вашу тему, нажмите на неё и выберите <strong>Install</strong>.
+                </li>
+                <li>
+                    <strong>Перезагрузка.</strong> После установки всех частей темы нажмите кнопку <strong>Reboot</strong> (Перезагрузить). Консоль включится с новым дизайном!
+                </li>
+            </ul>
+        </section>
+
+        <!-- Что делать при ошибке (Краш Атмосферы) -->
+        <section class="content-section" style="border-color: #ff453a;">
+            <h2 style="color: #ff453a; margin-bottom: 12px;">Консоль выдает ошибку (Atmosphere Crash)?</h2>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                Если вы обновили прошивку и забыли удалить темы, при включении вы получите экран с критической ошибкой <strong>Atmosphere Crash</strong> (чаще всего с кодом <span class="code-inline" style="color: #ffcecb; background: rgba(255, 69, 58, 0.2); border: none;">0100000000001000</span>). Не паникуйте, это легко исправить:
+            </p>
+            
+            <ol style="color: #cccccc; line-height: 1.8; padding-left: 20px;">
+                <li>Выключите консоль и вставьте карту памяти в компьютер.</li>
+                <li>Откройте папку <strong><span class="code-inline">atmosphere</span></strong>, затем папку <strong><span class="code-inline">contents</span></strong>.</li>
+                <li>Найдите внутри папку с названием <strong><span class="code-inline" style="color: white;">0100000000001000</span></strong> и просто <strong>удалите её</strong>.</li>
+                <li>Вставьте карту обратно в Switch. Консоль успешно загрузится со стандартной черной/белой темой!</li>
+            </ol>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

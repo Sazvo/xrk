@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Установка игр - FeySwitch</title>
+    <meta name="description" content="Гайд: Как скачивать и устанавливать игры на прошитый Nintendo Switch через DBI MTP.">
+    
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main>
+        <header>
+            <h1>Установка игр по кабелю</h1>
+            <p>Самый быстрый и безопасный способ установки игр (в форматах .nsp, .nsz, .xci) напрямую с ПК на консоль с помощью программы DBI.</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Инструкция по установке через MTP</h2>
+            
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Открытие DBI.</strong> Зайдите в меню Homebrew и запустите программу <strong>DBI</strong>. 
+                    <div style="margin-top: 6px; margin-bottom: 6px; color: var(--text-muted); font-size: 0.9rem;">
+                        <em>Примечание:</em> Если у вас на главном экране нет иконки Homebrew, вам нужно зайти через <strong>Applet Mode</strong>. Для этого зажмите кнопки <strong>L</strong> и <strong>R</strong> на джойконах и, не отпуская их, откройте стандартное приложение <strong>Альбом</strong>.
+                    </div>
+                    <img src="HTIG/1.png" alt="Запуск DBI" class="tutorial-img">
+                </li>
+                <li>
+                    <strong>Запуск MTP сервера.</strong> В главном меню DBI спуститесь вниз и выберите пункт <strong>Run MTP responder</strong>. На экране появится надпись об ожидании подключения.
+                    <img src="HTIG/2.png" alt="Выбор MTP responder" class="tutorial-img">
+                </li>
+                <li>
+                    <strong>Подключение к ПК.</strong> Подключите вашу консоль к компьютеру с помощью надежного кабеля USB Type-C. На экране Switch появится статус соединения.
+                    <img src="HTIG/3.png" alt="Подключение по кабелю" class="tutorial-img">
+                </li>
+                <li>
+                    <strong>Выбор диска для установки.</strong> На компьютере (в разделе "Этот компьютер") появится новое устройство с именем Switch. Откройте его и перейдите в виртуальную папку <strong>5: MicroSD install</strong> (или <i>NAND install</i>, если хотите установить во внутреннюю память).
+                    <img src="HTIG/4.png" alt="Выбор папки MicroSD install" class="tutorial-img">
+                </li>
+                <li>
+                    <strong>Копирование файлов.</strong> Просто перетащите файлы скачанных игр (и обновления к ним) в эту открытую папку. Процесс установки начнется автоматически. По завершении игра появится на главном экране консоли!
+                    <img src="HTIG/5.png" alt="Копирование игр" class="tutorial-img">
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

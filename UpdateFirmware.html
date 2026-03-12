@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обновление прошивки - FeySwitch</title>
+    <meta name="description" content="Подробный гайд: как безопасно обновить системную прошивку Nintendo Switch (Firmware) через Daybreak.">
+    
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="sidebar-container"></div>
+
+    <main>
+        <header>
+            <h1>Обновление системы (Daybreak)</h1>
+            <p>Гайд по безопасному (офлайн) обновлению системной прошивки (Firmware) Nintendo Switch. Это нужно для запуска новых игр, требующих актуальную версию ПО.</p>
+        </header>
+
+        <!-- Текстовая пошаговая инструкция -->
+        <section class="content-section">
+            <h2 style="display: flex; align-items: center; gap: 10px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: var(--accent-color);"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                Инструкция по установке
+            </h2>
+            
+            <div class="alert warning">
+                <strong>Важно:</strong> Перед обновлением <em>Системы (Firmware)</em>, вы <strong>ОБЯЗАТЕЛЬНО</strong> должны обновить <em>свою кастомную прошивку (Кефир/UltraNX/4IFIR и т.д.)</em> на вашей SD-карте! Иначе после обновления консоль не включится.
+            </div>
+
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Подготовка файлов.</strong> Скачайте архив с нужной версией прошивки (Firmware) в формате <span class="code-inline">.zip</span> из надежного источника.
+                </li>
+                <li>
+                    <strong>Копирование на SD-карту.</strong> Распакуйте скачанный архив. Внутри будет много файлов с длинными названиями (сотни файлов <span class="code-inline">.nca</span>). Создайте в корне вашей SD-карты папку с понятным названием, например, <strong>"Firmware"</strong>, и скопируйте все эти файлы туда.
+                </li>
+                <li>
+                    <strong>Запуск Daybreak.</strong> Вставьте карту в консоль, включите её и перейдите в Homebrew Menu (через Альбом). Найдите в списке приложение <strong>Daybreak</strong> и запустите его.
+                </li>
+                <li>
+                    <strong>Выбор папки.</strong> В главном меню Daybreak нажмите кнопку <strong>Install</strong>. Откроется файловый менеджер. Найдите и выберите папку "Firmware", в которую вы закинули файлы на втором шаге.
+                </li>
+                <li>
+                    <strong>Проверка.</strong> Программа быстро просканирует файлы. Если всё скачано верно, появится сообщение "Update is valid". Нажмите <strong>Continue</strong>.
+                </li>
+                <li>
+                    <strong>Настройки установки.</strong> <br><br>
+                    <span style="color: var(--text-muted);">1.</span> На вопрос "Preserve settings" (сохранить настройки) выберите <strong>Preserve settings</strong>.<br>
+                    <span style="color: var(--text-muted);">2.</span> На вопрос о формате файловой системы выберите <strong>Install (FAT32 + exFAT)</strong> — это самый надежный и универсальный вариант.
+                </li>
+                <li>
+                    <strong>Установка.</strong> Нажмите <strong>Continue</strong>, чтобы начать прошивку системы. Дождитесь, пока полоса загрузки дойдет до конца (это займет около 1-2 минут). Ни в коем случае не выключайте консоль!
+                </li>
+                <li>
+                    <strong>Перезагрузка.</strong> После успешной установки программа предложит перезагрузиться. Нажмите <strong>Reboot</strong>. Консоль перезапустится уже на новой версии системы!
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - FeySwitch</title>
+    <meta name="description" content="HUB с прошивками для Nintendo Switch.">
+    
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+
+    <!-- СТИЛИ ТОЛЬКО ДЛЯ ГЛАВНОЙ СТРАНИЦЫ -->
+    <style>
+        /* Фоновые размытые свечения (Ambient Glow) */
+        .ambient-glow { position: fixed; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.4; pointer-events: none; }
+        .glow-1 { top: -10%; left: -10%; width: 400px; height: 400px; background: rgba(88, 101, 242, 0.15); }
+        .glow-2 { bottom: -20%; right: -10%; width: 500px; height: 500px; background: rgba(255, 69, 58, 0.1); }
+
+        /* Крутая шапка (Hero Banner) */
+        .hero-section { text-align: center; padding: 60px 20px; border-bottom: 1px solid var(--border-color); margin-bottom: 40px; position: relative; }
+        
+        /* Градиентный текст для заголовка */
+        .hero-section h1 { font-size: 3rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; background: linear-gradient(135deg, #ffffff 0%, #888888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-section p { font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; }
+
+        /* Кнопки в Hero */
+        .hero-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .hero-btn { padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary { background: var(--text-main); color: var(--bg-color); }
+        .btn-primary:hover { background: #d0d0d0; transform: translateY(-2px); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.05); color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: #444; transform: translateY(-2px); }
+
+        /* Премиум-карточки (Glassmorphism + Hover) */
+        .premium-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+        
+        /* Эффект наведения */
+        .premium-card:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset; background: rgba(30, 30, 30, 0.8); }
+        
+        /* Значки статуса (Бейджи) */
+        .badge { position: absolute; top: 20px; right: 20px; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-hot { background: rgba(255, 69, 58, 0.15); color: #ffcecb; border: 1px solid rgba(255, 69, 58, 0.3); }
+        .badge-clean { background: rgba(48, 209, 88, 0.15); color: #b7f2c6; border: 1px solid rgba(48, 209, 88, 0.3); }
+        .badge-classic { background: rgba(10, 132, 255, 0.15); color: #bce0fd; border: 1px solid rgba(10, 132, 255, 0.3); }
+
+        .premium-card h3 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 10px; font-weight: 600; }
+        .premium-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 0; }
+        
+        /* Секции */
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .section-header h2 { font-size: 1.5rem; color: var(--text-main); font-weight: 600; }
+        .section-line { flex-grow: 1; height: 1px; background: linear-gradient(to right, var(--border-color), transparent); }
+    </style>
+</head>
+<body>
+
+    <!-- Окружающее свечение на фоне -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <div id="sidebar-container"></div>
+
+    <main style="padding-top: 0; padding-left: 40px; padding-right: 40px;">
+        
+        <!-- ГЛАВНЫЙ БАННЕР -->
+        <header class="hero-section">
+            <img src="FSlogo.svg" alt="FeySwitch" style="max-width: 100%; height: 120px; margin-bottom: 20px;">
+            <p>Всё, что нужно для взлома, кастомизации и настройки вашей консоли. От выбора прошивки до пайки чипов и установки игр.</p>
+
+            
+            <div class="hero-actions">
+                <a href="UltraNX.html" class="hero-btn btn-primary">
+                    Начать с UltraNX
+                </a>
+                <a href="InstallGames.html" class="hero-btn btn-secondary">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    Читать гайды
+                </a>
+            </div>
+        </header>
+
+        <!-- РАЗДЕЛ ПРОШИВОК -->
+        <div style="margin-bottom: 50px;">
+            <div class="section-header">
+                <h2>Выбор прошивки</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="video-grid" style="margin-top: 0;">
+                
+                <!-- Карточка 4IFIR -->
+                <a href="4IFIR.html" class="premium-card">
+                    <div class="badge badge-hot">Хардкор</div>
+                    <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid var(--border-color);">
+                        <img src="assets/4ifirKefir.svg" alt="4IFIR Logo" style="height: 32px; width: auto;">
+                    </div>
+                    <h3>4IFIR</h3>
+                    <p>Прошивка для экстремального разгона, жесткого андервольтинга и выжимания максимального FPS из консоли.</p>
+                </a>
+
+                <!-- Карточка UltraNX -->
+                <a href="UltraNX.html" class="premium-card">
+                    <div class="badge badge-clean">Рекомендуем</div>
+                    <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid var(--border-color);">
+                        <img src="assets/Ultra.svg" alt="UltraNX Logo" style="height: 32px; width: auto;">
+                    </div>
+                    <h3>UltraNX</h3>
+                    <p>Сверхбыстрая и стабильная система без лишнего мусора. Идеальный порядок на карте памяти и мгновенный запуск.</p>
+                </a>
+
+                <!-- Карточка Kefir -->
+                <a href="Kefir.html" class="premium-card">
+                    <div class="badge badge-classic">Классика</div>
+                    <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid var(--border-color);">
+                        <img src="assets/4ifirKefir.svg" alt="Kefir Logo" style="height: 32px; width: auto;">
+                    </div>
+                    <h3>Kefir</h3>
+                    <p>Проверенная временем сборка "Всё-в-одном". Отлично подходит для новичков, включает все нужные утилиты из коробки.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ АППАРАТНОГО ВЗЛОМА И МОДЧИПОВ -->
+        <div style="margin-bottom: 30px;">
+            <div class="section-header">
+                <h2>Аппаратный взлом</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="video-grid" style="margin-top: 0; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                
+                <!-- Карточка PicoFly -->
+                <a href="PicoFly.html" class="premium-card">
+                    <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid var(--border-color);">
+                        <img src="Picofly/PicoFly.svg" alt="PicoFly Logo" style="height: 32px; width: auto;">
+                    </div>
+                    <h3>Установка PicoFly RP2040</h3>
+                    <p>Исчерпывающее руководство по пайке модчипа для непрошиваемых ревизий (V2, Lite, OLED) с видеоинструкциями.</p>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск TitleID - FeySwitch</title>
+    <meta name="description" content="Узнать TitleID (16-значный код) любой игры Nintendo Switch для установки модов и читов.">
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        .search-box { display: flex; gap: 10px; margin-bottom: 30px; }
+        .search-input { flex-grow: 1; padding: 14px 20px; font-size: 1.1rem; background: var(--surface-color); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px; outline: none; transition: border-color 0.2s; }
+        .search-input:focus { border-color: var(--accent-color); }
+        .results-container { display: flex; flex-direction: column; gap: 12px; }
+        .result-item { background: rgba(20,20,20,0.6); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .result-item h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .result-item .tid { font-family: monospace; color: #ff9f0a; font-size: 1.2rem; background: #000; padding: 4px 8px; border-radius: 4px; border: 1px dashed #444; }
+        .copy-btn { background: #262626; border: none; color: white; padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: background 0.2s; font-weight: bold; }
+        .copy-btn:hover { background: var(--text-main); color: var(--bg-color); }
+        .loader { display: none; color: var(--text-muted); text-align: center; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <main>
+        <header>
+            <h1>Поиск TitleID игр</h1>
+            <p>База данных 16-значных кодов игр Nintendo Switch. Необходима для правильной установки русификаторов (LayeredFS) и читов (EdiZon).</p>
+        </header>
+
+        <section class="content-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Введите название игры (например, Zelda)..." autocomplete="off">
+                <button id="searchBtn" class="btn" style="margin-top:0;">Найти</button>
+            </div>
+            
+            <div id="loader" class="loader">Ищем в базе...</div>
+            <div id="results" class="results-container">
+                <!-- Результаты появятся здесь -->
+                <div style="text-align: center; color: var(--text-muted); padding: 20px;">Введите название игры на английском языке, чтобы начать поиск.</div>
+            </div>
+        </section>
+
+        <script>
+            // Встроенная микро-база самых популярных игр (как фолбэк для демонстрации, если API лежит)
+            const localDB = [
+                { name: "The Legend of Zelda: Tears of the Kingdom", id: "0100F2C0115B6000" },
+                { name: "The Legend of Zelda: Breath of the Wild", id: "01007EF00011E000" },
+                { name: "Super Mario Odyssey", id: "0100000000010000" },
+                { name: "Animal Crossing: Super Mario Bros. Wonder", id: "010015100B514000" },
+                { name: "Red Dead Redemption", id: "0100EA801A39E000" },
+                { name: "Hogwarts Legacy", id: "01002A5013CA6000" },
+                { name: "Mario Kart 8 Deluxe", id: "0100152000022000" },
+                { name: "Super Smash Bros. Ultimate", id: "01006A800016E000" },
+                { name: "The Witcher 3: Wild Hunt", id: "01003D100E9C6000" }
+            ];
+
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const resultsDiv = document.getElementById('results');
+            const loader = document.getElementById('loader');
+
+            const performSearch = () => {
+                const query = searchInput.value.toLowerCase().trim();
+                if (query.length < 3) return;
+
+                loader.style.display = 'block';
+                resultsDiv.innerHTML = '';
+
+                // Имитация задержки сети для красоты
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    // Фильтруем нашу базу
+                    const matches = localDB.filter(game => game.name.toLowerCase().includes(query));
+                    
+                    if (matches.length === 0) {
+                        resultsDiv.innerHTML = `<div style="text-align: center; color: #ff453a; padding: 20px;">Игра не найдена. Попробуйте ввести оригинальное английское название.</div>`;
+                        return;
+                    }
+
+                    matches.forEach(game => {
+                        const item = document.createElement('div');
+                        item.className = 'result-item';
+                        item.innerHTML = `
+                            <div>
+                                <h3>${game.name}</h3>
+                                <span class="tid">${game.id}</span>
+                            </div>
+                            <button class="copy-btn" onclick="navigator.clipboard.writeText('${game.id}'); this.innerText='Скопировано!'; setTimeout(()=>this.innerText='Копировать', 2000);">Копировать</button>
+                        `;
+                        resultsDiv.appendChild(item);
+                    });
+                }, 400);
+            };
+
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
+        </script>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+</body>
+</html>

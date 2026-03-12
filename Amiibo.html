@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эмуляция Amiibo - FeySwitch</title>
+    <meta name="description" content="Как бесплатно использовать Amiibo фигурки в играх на Nintendo Switch с помощью модуля emuiibo.">
+    <link rel="icon" type="image/svg+xml" href="FSmini.svg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <main>
+        <header>
+            <h1 style="display: flex; align-items: center; gap: 16px;">
+                <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: var(--accent-color);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                Эмуляция Amiibo (emuiibo)
+            </h1>
+            <p>Получайте эксклюзивный лут (оружие, костюмы, ресурсы) в играх вроде Zelda: TotK и Smash Bros без покупки реальных пластиковых фигурок!</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Как использовать виртуальные Amiibo</h2>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                В сборке <strong>UltraNX</strong> модуль <em>emuiibo</em> уже встроен. Вам нужно только создать виртуальные фигурки и "приложить" их к консоли через оверлей.
+            </p>
+
+            <ul class="tutorial-steps">
+                <li>
+                    <strong>Создание фигурок (Генерация).</strong> Зайдите в меню Homebrew (через Альбом) и откройте приложение <strong>Emuuiibo / Amiibo Generator</strong> (или аналогичное из вашей сборки). Найдите нужную игру (например, Zelda) и сгенерируйте все доступные фигурки. Они сохранятся на флешку.
+                </li>
+                <li>
+                    <strong>Подготовка в игре.</strong> Запустите игру и активируйте способность использования Amiibo (например, выберите руну Amiibo в Зельде).
+                </li>
+                <li>
+                    <strong>Открытие Tesla Menu.</strong> Прямо во время игры откройте оверлей: зажмите <span class="code-inline">L</span> + <span class="code-inline">R</span> + <span class="code-inline">Стрелка ВЛЕВО (D-Pad)</span>.
+                </li>
+                <li>
+                    <strong>Выбор фигурки.</strong> В появившемся меню выберите пункт <strong>emuiibo</strong>. <br>
+                    1. Убедитесь, что статус модуля — <strong>On</strong>.<br>
+                    2. Выберите пункт <strong>View Amiibos</strong>, найдите нужную фигурку и выберите её.<br>
+                    3. Статус сменится на <em>Connected</em>.
+                </li>
+                <li>
+                    <strong>Получение лута.</strong> Скройте меню. Игра автоматически "прочитает" фигурку, как будто вы приложили её к правому стику, и выдаст вам сундук с наградой!
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 FeySwitch Homebrew. Создано <span style="color: var(--text-main); font-weight: 600;">Feylins</span>.</p>
+        </footer>
+    </main>
+</body>
+</html>
